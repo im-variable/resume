@@ -1,0 +1,98 @@
+ul.list-info li:before {
+  color: var(--textPrimary);
+  content: "\f138"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em; /* same as padding-left set on li */
+  width: 1.3em; /* same as padding-left set on li */
+}
+
+ul.list-info li {
+  list-style-type: none;
+  padding: 10px 0;
+}
+
+.card-container {
+  margin-top: 20px;
+  position: relative;
+  padding: 40px;
+  background-color: var(--backgroundPrimary);
+  text-align: center;
+  min-height: 20vh;
+}
+
+.card-container span.fontaw-icon {
+  color: var(--textPrimary);
+  font-size: x-large;
+  position: absolute;
+  top: -16px;
+  right: 45%;
+}
+
+.skill-wrapper {
+  margin-bottom: 25px;
+}
+
+.skill {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill-percentage {
+  margin-block: 0;
+}
+
+.progress-bar-wrap {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+  width: 1px;
+  height: 10px;
+  transition: 0.9s;
+  background-color: var(--textPrimary);
+}
+
+.container .slider-container {
+  width: 100%;
+  display: flex;
+}
+
+.slider-container .slide {
+  min-height: 50vh;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  color: var(--textSecondary);
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 500ms ease-in-out;
+}
+
+.slider-container .slide h3 {
+  position: absolute;
+  font-size: 20px;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.slider-container .slide.active {
+  background-size: contain;
+  background-position: center;
+  flex: 10;
+}
+
+.slider-container .slide.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+footer {
+  text-align: right;
+  padding: 0 20px;
+}

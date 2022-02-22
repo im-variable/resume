@@ -1,0 +1,124 @@
+.home-section {
+  padding: 20px;
+  width: 80%;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: var(--textSecondary);
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-name: slideInTop;
+}
+
+#typewriter {
+  color: var(--textPrimary);
+  font-weight: bold;
+}
+
+.home-navbar {
+  margin: 20px 0 0 0;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-navbar .nav-item:after {
+  display: block;
+  content: "";
+  border-bottom: 1px solid var(--textPrimary);
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.home-navbar .nav-item:hover:after {
+  transform: scaleX(1);
+}
+
+.social-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0 0 0;
+  width: 50%;
+}
+
+.social-navbar .nav-item {
+  padding: 0;
+  border-radius: 10px;
+}
+
+/* media query */
+
+/* default styles here for older browsers. 
+       I tend to go for a 600px - 960px width max but using percentages
+    */
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+
+  nav {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+
+  nav {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  /* for sumo sized (mac) screens */
+
+  nav {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  /* styles for mobile browsers smaller than 480px; (iPhone) */
+
+  .social-navbar {
+    width: 100%;
+  }
+
+  .navbar {
+    justify-content: flex-end;
+  }
+
+  .navbar-brand {
+    display: none !important;
+  }
+
+  .home-navbar {
+    display: none !important;
+  }
+}
+@media only screen and (device-width: 768px) {
+  /* default iPad screens */
+
+  .social-navbar {
+    width: 100%;
+  }
+
+  .navbar {
+    justify-content: flex-end;
+  }
+
+  .navbar-brand {
+    display: none !important;
+  }
+
+  .home-navbar {
+    display: none !important;
+  }
+}
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation: landscape) {
+  /* For landscape layouts only */
+}

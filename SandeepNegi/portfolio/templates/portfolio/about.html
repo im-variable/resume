@@ -1,0 +1,145 @@
+{% extends "portfolio/base.html" %} {% load static %} {% block content %}
+<!--  -->
+{%block style %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  media="screen"
+  href="{%static 'css/about.css' %}"
+/>
+
+{% endblock style%}
+
+<div class="content-section container">
+  <div class="container pb-4">
+    <h6>About</h6>
+    <h1 class="text-uppercase">Learn more about me</h1>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <h4 class="highlighter">{{personal_info.profession}}</h4>
+        <p>
+          A brief detail about me:
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <ul class="list-info">
+              <li>Birthday: {{personal_info.date_of_birth}}</li>
+              {% for contact in contact_info %} {% if contact.contact_type == 'whatsapp' %}
+              <li>Mobile: {{contact.contact_detail}}</li>
+              {% endif %} {% if contact.contact_type == 'envelope' %}
+              <li>Email: {{contact.contact_detail}}</li>
+              {% endif %} {% endfor %}
+              <li>Address: {{personal_info.city}}, {{personal_info.state}}</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul class="list-info">
+              <li>Age: {{personal_info.date_of_birth|timesince}}</li>
+              <li>{{education_info.education_type|title}}:
+                {{education_info.education_detail|title}}
+              </li>
+              <li>Company: Hannovit Tech.</li>
+            </ul>
+          </div>
+        </div>
+        <p>{{personal_info.about}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card-container">
+          <span class="fontaw-icon"
+            ><i class="fa fa-users" aria-hidden="true"></i
+          ></span>
+          <span
+            data-purecounter-start="0"
+            data-purecounter-end="12"
+            data-purecounter-duration="0"
+            class="purecounter"
+            >{{product_count}}</span
+          >
+          <p>Happy Client</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-container">
+          <span class="fontaw-icon"
+            ><i class="fa fa-folder" aria-hidden="true"></i
+          ></span>
+          <span>{{product_count}}</span>
+          <p>Projects</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-container">
+          <span class="fontaw-icon"
+            ><i class="fa fa-phone" aria-hidden="true"></i
+          ></span>
+          <span>8hr/day</span>
+          <p>Hour of Support</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card-container">
+          <span class="fontaw-icon"
+            ><i class="fa fa-user-circle" aria-hidden="true"></i
+          ></span>
+          <span>02</span>
+          <p>Members</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h6>Skills</h6>
+    <div class="row">
+      {% for skill in skill_info %}
+      <div class="col-md-6">
+        <div class="skill-wrapper">
+          <span class="skill"
+            >{{skill.skill_name|title}}
+            <p class="skill-percentage">{{skill.skill_rate}}0%</p></span
+          >
+          <div class="progress-bar-wrap my-2">
+            <div
+              class="progress-bar"
+              role="progressbar"
+              aria-valuenow="{{skill.skill_rate}}"
+              aria-valuemin="0"
+              aria-valuemax="10"
+              style="width: {{skill.skill_rate}}0%"
+            ></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <h6>Popular Projects</h6>
+    <div class="slider-container">
+      {% for project in project_info %}
+      <div
+        class="slide"
+        style="
+          background: #000000 url('{{project.project_logo}}') no-repeat center;
+          background-size: contain;
+        "
+      >
+        <a href="{% if project.url %}{% if 'http' in project.url %}{{project.url}}{% else %}https://{{project.url}}{% endif %}{% endif %}" target="_blank"
+          ><h3>{{project.project_name}}</h3></a
+        >
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% block script %}
+
+<script src="{%static 'js/about.js' %}" defer></script>
+
+{% endblock script%} {% endblock %}

@@ -1,0 +1,62 @@
+{% extends "portfolio/base.html" %} {% load static %} {% block content %}
+<!--  -->
+{%block style %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  media="screen"
+  href="{%static 'css/resume.css' %}"
+/>
+
+{% endblock style%}
+
+<div class="content-section container">
+  <div class="container pb-4">
+    <h6>Resume</h6>
+    <h1 class="text-uppercase">Check My Resume</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Education</h4>
+        {% regroup education_info by education_type as education_list %} {% for group in education_list %}
+        <div class="resume-card">
+          <h5 class="highlighter">{{group.grouper|title}}</h5>
+          {% for edu in group.list %}
+          <li>
+            {{edu.education_detail}} from {{edu.university}} <span class="resume-item"
+            >({{edu.start_year}}
+            - {{edu.end_year}})
+          </span>
+          </li>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="col-md-6">
+        <h4>Professional Experience</h4>
+        {% regroup work_exp_info by work_experience__company as company_list %} 
+        {% for company_group in company_list %}
+        <div class="resume-card">
+          <h5 class="highlighter">{{company_group.grouper|title}}</h5>
+          {% for proj in company_group.list %}
+          {% if not forloop.counter0 %}
+          <span class="resume-item"
+            >
+            {{proj.work_experience__start_year|date:"F, Y"}} - {% if proj.work_experience__is_present %}Present{% else %}{{proj.work_experience__end_year|date:"F, Y"}}{% endif %}</span
+          >
+          {% endif %}
+          <p>Projects:</p>
+          <li>{{proj.project_name}}</li>
+          {% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block script %}
+
+<script src="{%static 'js/resume.js' %}" defer></script>
+
+{% endblock script%} {% endblock %}

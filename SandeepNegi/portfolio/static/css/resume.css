@@ -1,0 +1,36 @@
+.resume-card {
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+p {
+  margin-block: 0;
+}
+
+.resume-card * {
+  padding: 2px;
+}
+
+.resume-card::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+  left: -9px;
+  top: 0;
+  background: #18d26e;
+  border: 2px solid #18d26e;
+}
+
+.resume-item {
+  border-radius: 1px;
+  /* margin: 2px 0 2px 0; */
+  position: relative;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: center;
+  min-height: 5vh;
+}

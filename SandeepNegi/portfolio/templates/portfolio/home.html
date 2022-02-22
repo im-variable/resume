@@ -1,0 +1,62 @@
+{% extends "portfolio/base.html" %} {% load static %} {% block content %}
+<!--  -->
+{%block style %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  media="screen"
+  href="{%static 'css/home.css' %}"
+/>
+
+{% endblock style%}
+
+<div class="container home-section">
+  <h1 class="heading1">{{user_detail.first_name}} {{user_detail.last_name}}</h1>
+  <!-- @5794928 -->
+  <div class="centeredBox">
+    I'm
+    <span
+      id="typewriter"
+      data-array="Designer, Developer, Freelancer, Photographer"
+    ></span>
+    <span class="cursor"></span>
+  </div>
+  <div class="home-navbar">
+    <div class="nav-item">
+      <a class="" href="{%url 'home' uname %}">Home</a>
+    </div>
+    <div class="nav-item">
+      <a class="" href="{%url 'about' uname %}">About</a>
+    </div>
+    <div class="nav-item">
+      <a class="" href="{%url 'resume' uname %}">Resume</a>
+    </div>
+    <div class="nav-item">
+      <a class="" href="{%url 'projects' uname %}">Projects</a>
+    </div>
+    <div class="nav-item">
+      <a class="" href="{%url 'contact' uname %}">Contact</a>
+    </div>
+    <div class="nav-item">
+      <a class="" href="{%url 'users:login'%}">Login</a>
+    </div>
+  </div>
+  <div class="social-navbar">
+    {% for contact in contact_info %}
+    <div class="nav-item">
+      <a
+        href="{% if 'http' in contact.contact_detail %}{{contact.contact_detail}}{% else %} https://{{contact.contact_detail}}{% endif %}"
+        target="_blank"
+        ><i class="fa fa-{{contact.contact_type}}" aria-hidden="true"></i
+      ></a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% block script %}
+
+<script src="{%static 'js/home.js' %}" defer></script>
+
+{% endblock script%} {% endblock %}

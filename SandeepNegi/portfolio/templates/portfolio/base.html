@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sandeep Negi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- jQuery library -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      defer
+    ></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="{%static 'css/base.css' %}"
+    />
+
+    {% block style %} {% endblock style%}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand heading1" href="{%url 'home' uname %}"
+          >{{user_detail.first_name}} {{user_detail.last_name}}</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{%url 'home' uname %}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'about' uname %}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'resume' uname %}">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'projects' uname %}">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'contact' uname %}">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>{% block content %} {% endblock %}</main>
+
+    <canvas id="waves"></canvas>
+    {% comment %}
+    <footer>
+      <div>
+        Designed By
+        <span class="owner-name">Sandeep Singh Negi</span>
+      </div>
+    </footer>
+    {% endcomment %}
+  </body>
+
+  <script src="{%static 'js/base.js' %}" defer></script>
+
+  {% block script %} {% endblock script%}
+</html>

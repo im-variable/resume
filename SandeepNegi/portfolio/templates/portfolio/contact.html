@@ -1,0 +1,70 @@
+{% extends "portfolio/base.html" %} {% load static %} {% block content %}
+<!--  -->
+{%block style %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  media="screen"
+  href="{%static 'css/contact.css' %}"
+/>
+
+{% endblock style%}
+
+<div class="content-section container">
+  <div class="container pb-4">
+    <h6>Contact</h6>
+    <h1 class="text-uppercase">Contact Me</h1>
+    <div class="row">
+      <div class="col-md-6 bg-style">
+        <h4 class="highlighter">My Address</h4>
+        <p>
+          {{personal_info.address}}, {{personal_info.city}},
+          {{personal_info.district}}, {{personal_info.state}},
+          {{personal_info.country}}
+        </p>
+      </div>
+      <div class="col-md-6 bg-style">
+        <h4 class="highlighter">Social Profile</h4>
+        <div class="social-navbar">
+          {% for contact in contact_info %}
+          <div class="nav-item">
+            <a
+              href="{% if 'http' in contact.contact_detail %}{{contact.contact_detail}}{% else %} https://{{contact.contact_detail}}{% endif %}"
+              target="_blank"
+              ><i class="fa fa-{{contact.contact_type}}" aria-hidden="true"></i
+            ></a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 bg-style">
+        <h4 class="highlighter">Call Me</h4>
+        {% for contact in contact_info %}
+        {% if 'whatsapp' in contact.contact_type %}<p>{{contact.contact_detail}}</p>{% endif %}
+        {% endfor %}
+      </div>
+      <div class="col-md-6 bg-style">
+        <h4 class="highlighter">Email</h4>
+        {% for contact in contact_info %}
+        {% if 'envelope' in contact.contact_type %}<p>{{contact.contact_detail}}</p>{% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+    {% comment %}
+    <div class="row">
+      <div class="col-md-6 bg-style"></div>
+      <div class="col-md-6 bg-style"></div>
+    </div>
+    {% endcomment %}
+  </div>
+</div>
+
+{% block script %}
+
+<script src="{%static 'js/contact.js' %}" defer></script>
+
+{% endblock script%} {% endblock %}
