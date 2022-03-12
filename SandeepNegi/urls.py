@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic.base import RedirectView
+from django.conf.urls import url
 
 urlpatterns = [
     path('u/', include('users.urls')),
     path('admin/a/', admin.site.urls),
     path('', include('portfolio.urls')),
+    
+    url(r'^.*$', RedirectView.as_view(url='/sandeepnegi', permanent=False), name='home')
+
 ]
