@@ -16,7 +16,4 @@ urlpatterns = [
     path('r/<str:uname>', resume, name='resume'),
     path('p/<str:uname>', projects, name='projects'),
     path('c/<str:uname>', contact, name='contact'), 
-
-
-    url(r'^.*$', RedirectView.as_view(url='/sandeepnegi', permanent=False), name='home')
 ]
