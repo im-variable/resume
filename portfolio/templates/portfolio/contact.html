@@ -30,7 +30,7 @@
           {% for contact in contact_info %}
           <div class="nav-item">
             <a
-              href="{% if 'http' in contact.contact_detail %}{{contact.contact_detail}}{% else %} https://{{contact.contact_detail}}{% endif %}"
+              href="{% if contact.contact_type == 'whatsapp' %}https://api.whatsapp.com/send?phone={{contact.contact_detail}}{% elif 'http' in contact.contact_detail %}{{contact.contact_detail}}{% else %} https://{{contact.contact_detail}}{% endif %}"
               target="_blank"
               ><i class="fa fa-{{contact.contact_type}}" aria-hidden="true"></i
             ></a>
